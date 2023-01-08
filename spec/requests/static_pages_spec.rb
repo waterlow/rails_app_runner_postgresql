@@ -9,7 +9,7 @@ RSpec.describe 'StaticPages', type: :request do
     it 'should get home' do
       get root_path
       expect(response).to have_http_status(200)
-      expect(css_select('title').text).to eq("Home | #{base_title}")
+      expect(css_select('title').text).to eq(base_title)
     end
   end
 
