@@ -12,29 +12,10 @@
   </head>
 
   <body>
-    <header class="navbar navbar-expand navbar-dark fixed-top bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Fixed navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-0">
-            <li class="nav-item">
-              <%= link_to "Home", '#', class: "nav-link active", 'aria-current': "page" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Link", '#', class: "nav-link", 'aria-current': "page" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Log in", '#', class: 'nav-link disabled', 'aria-disabled': true %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
+    <%= render "layouts/header" %>
     <main class="container">
       <%= yield %>
+      <%= render "layouts/footer" %>
     </main>
   </body>
 </html>
