@@ -3,3 +3,9 @@
 body {
   padding-top: 4.5rem;
 }
+
+.field_with_errors {
+  input, textarea {
+    @extend .is-invalid;
+  }
+}
