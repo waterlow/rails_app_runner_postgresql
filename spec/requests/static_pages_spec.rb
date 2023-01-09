@@ -4,8 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'StaticPages', type: :request do
   base_title = 'Ruby on Rails Tutorial Sample App'
-
-  let(:link_count) { ->(path) { css_select("a[href=\"#{path}\"]").size } }
+  link_count = ->(path) { css_select("a[href=\"#{path}\"]").size }
 
   describe 'GET /' do
     it 'should get home' do

@@ -25,7 +25,8 @@ module RailsAppRunnerPostgresql
                        helper_specs: false,
                        routing_specs: false,
                        controller_specs: false,
-                       request_specs: false
+                       request_specs: false,
+                       model_specs: false
       g.jbuilder false
     end
   end
