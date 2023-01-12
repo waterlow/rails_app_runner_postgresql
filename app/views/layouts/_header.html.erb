@@ -9,9 +9,32 @@
         <li class="nav-item">
           <%= link_to "Help", help_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Log in", '#', class: 'nav-link' %>
-        </li>
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to "Profile", current_user, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Settings", '#', class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log out", logout_path, data: { "turbo-method": :delete }, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" id="dropdownMenuButton1">Dropdown</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+          </li>
+
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Log in", '#', class: 'nav-link' %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
