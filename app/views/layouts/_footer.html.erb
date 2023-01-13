@@ -1,10 +1,10 @@
-<footer class="pt-3 mt-4 text-muted border-top">
-  The <a class="link-secondary" href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-  by <a class="link-secondary" href="https://www.michaelhartl.com/">Michael Hartl</a>
-  <p class="float-end ms-1">
-    <%= link_to "About", about_path, class: 'link-secondary' %>
+<footer class="my-5 pt-5 text-muted text-center border-top">
+  <p class="mb-1">
+    The <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
+    by <a href="https://www.michaelhartl.com/">Michael Hartl</a>
   </p>
-  <p class="float-end ms-1">
-    <%= link_to "Contact", contact_path, class: 'link-secondary' %>
-  </p>
+  <ul class="list-inline">
+    <li class="list-inline-item"><%= link_to "About", about_path %></li>
+    <li class="list-inline-item"><%= link_to "Contact", contact_path %></li>
+  </ul>
 </footer>
