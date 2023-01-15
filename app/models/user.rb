@@ -9,7 +9,7 @@ class User < ApplicationRecord
                     length: { maximum: 255 },
                     format: { with: /\A#{EMAIL_REGEXP_STR}\z/i },
                     uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   has_secure_password
   attr_accessor :remember_token

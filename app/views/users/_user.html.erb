@@ -1,0 +1,15 @@
+<li>
+  <div class="d-flex align-items-end justify-content-between mt-3">
+    <div class="d-flex align-items-center">
+      <%= gravatar_for user, size: 50, css_class: 'me-3' %>
+      <div class="small">
+        <div class="fw-bold">
+          <%= link_to user.name, user %>
+          <% if current_user.admin? && !current_user?(user) %>
+            | <%= link_to "delete", user, data: { "turbo-method": :delete, turbo_confirm: "You sure?" } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

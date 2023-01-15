@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+User.create!(name:  "Example User",
+             email: "example@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar")
+
+first_names = %w[蒼 凪 蓮 陽翔 湊 陽葵 凛 詩 陽菜 結菜]
+last_names = %w[佐藤 鈴木 高橋 田中 伊藤 渡辺 山本 中村 小林 加藤]
+# 追加のユーザーをまとめて生成する
+99.times do |n|
+  name  = "#{last_names.sample}#{first_names.sample}"
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
+end
