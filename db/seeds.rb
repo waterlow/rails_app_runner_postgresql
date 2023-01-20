@@ -8,8 +8,10 @@
 
 User.create!(name:  "Example User",
              email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar")
+             password:              "password",
+             password_confirmation: "password",
+             activated: true,
+             activated_at: Time.zone.now)
 
 first_names = %w[蒼 凪 蓮 陽翔 湊 陽葵 凛 詩 陽菜 結菜]
 last_names = %w[佐藤 鈴木 高橋 田中 伊藤 渡辺 山本 中村 小林 加藤]
@@ -21,5 +23,7 @@ last_names = %w[佐藤 鈴木 高橋 田中 伊藤 渡辺 山本 中村 小林 �
   User.create!(name:  name,
                email: email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
 end
