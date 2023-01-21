@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_20_135840) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_21_073349) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_135840) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.index ["email"], name: "email_unique", unique: true
     t.check_constraint "char_length(email::text) <= 255", name: "email_length"
     t.check_constraint "char_length(name::text) <= 50", name: "name_length"
