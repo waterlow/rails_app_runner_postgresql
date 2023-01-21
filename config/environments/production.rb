@@ -97,4 +97,17 @@ Rails.application.configure do
     expire_after: 90.minutes,
     key: "_#{Rails.application.class.module_parent_name.downcase}_session",
   )
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = '8m3fpmzwpp.ap-northeast-1.awsapprunner.com'
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    :port           => 587,
+    :address        => 'email-smtp.ap-northeast-1.amazonaws.com',
+    :user_name      => ENV['SMTP_LOGIN'],
+    :password       => ENV['SMTP_PASSWORD'],
+    :domain         => host,
+    :authentication => :plain,
+  }
 end
