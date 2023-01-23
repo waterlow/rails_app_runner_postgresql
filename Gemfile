@@ -5,9 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.3'
 
+gem 'active_storage_validations'
 gem 'bcrypt'
 gem 'bootsnap', require: false
 gem 'bootstrap'
+gem 'image_processing'
 gem 'importmap-rails'
 gem 'pagy', '~> 6.0'
 gem 'pg', '~> 1.1'

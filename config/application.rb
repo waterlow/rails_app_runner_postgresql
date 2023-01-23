@@ -33,5 +33,7 @@ module RailsAppRunnerPostgresql
                        model_specs: false
       g.jbuilder false
     end
+
+    config.active_storage.variant_processor = :mini_magick
   end
 end

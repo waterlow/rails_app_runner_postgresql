@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @pagy, @microposts = pagy(@user.microposts)
   end
 
   def new
@@ -53,14 +54,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def logged_in_user
-    return if logged_in?
-
-    store_location
-    flash[:danger] = 'Please log in.'
-    redirect_to login_url, status: :see_other
   end
 
   def correct_user

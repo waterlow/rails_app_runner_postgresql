@@ -4,6 +4,8 @@ class User < ApplicationRecord
   # DBのcheck制約とvalidationで共通
   EMAIL_REGEXP_STR = '[a-z_0-9+-.]+@[.a-z0-9-]+[.]{1}[a-z]+'
 
+  has_many :microposts, dependent: :destroy
+
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true,
                     length: { maximum: 255 },
@@ -67,6 +69,10 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def feed
+    Micropost.where('user_id = ?', id)
   end
 
   private

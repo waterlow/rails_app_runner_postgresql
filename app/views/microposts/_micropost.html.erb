@@ -1,0 +1,18 @@
+<li>
+  <div class="d-flex border-top pt-3">
+    <div>
+      <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+    </div>
+    <div class="ms-3">
+      <p><%= link_to micropost.user.name, micropost.user, class: 'text-decoration-none' %></p>
+      <p><%= micropost.content %></p>
+      <%= image_tag micropost.image.variant(:display) if micropost.image.attached? %>
+      <p class="text-secondary">
+        Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+        <% if current_user?(micropost.user) %>
+          <%= link_to "delete", micropost, data: { "turbo-method": :delete, turbo_confirm: "You sure?" }, class: 'text-decoration-none' %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</li>

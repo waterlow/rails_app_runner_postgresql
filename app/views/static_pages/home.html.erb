@@ -1,5 +1,43 @@
-<div class="bg-light p-5 rounded">
-  <h1>Welcome to the Sample App</h1>
-  <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser’s viewport.</p>
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-lg-4">
+      <section class="user_info">
+        <%= gravatar_for(current_user) %>
+        <h3>
+          <%= current_user.name %>
+        </h3>
+        <p><%= link_to "view my profile", current_user %></p>
+        <p><%= pluralize(current_user.microposts.count, "micropost") %></p>
+        <%= form_with(model: @micropost) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <%= f.text_area :content, placeholder: "Compose new micropost...", class: 'form-control', rows: 5 %>
+          <div class="mt-2">
+            <%= f.file_field :image, class: 'form-control form-control-sm',
+                                     accept: "image/jpeg,image/gif,image/png" %>
+          </div>
+          <%= f.submit "Post", class: "btn btn-primary mt-3" %>
+        <% end %>
+      </section>
+    </aside>
+    <div class="col-lg-8">
+      <% if @feed_items.any? %>
+        <h3>Micropost Feed</h3>
+        <div class="mt-5">
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+        <ol class="list-unstyled">
+          <%= render @feed_items %>
+        </ol>
+        <div class="mt-5">
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="bg-light p-5 rounded">
+    <h1>Welcome to the Sample App</h1>
+    <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser’s viewport.</p>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>
