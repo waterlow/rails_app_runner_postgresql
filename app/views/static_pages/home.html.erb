@@ -8,6 +8,9 @@
         </h3>
         <p><%= link_to "view my profile", current_user %></p>
         <p><%= pluralize(current_user.microposts.count, "micropost") %></p>
+
+        <%= render 'shared/stats' %>
+
         <%= form_with(model: @micropost) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
           <%= f.text_area :content, placeholder: "Compose new micropost...", class: 'form-control', rows: 5 %>
